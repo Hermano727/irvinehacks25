@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import TimestampPill from "../components/chatComponents/TimestampPill";
+import UsernamePill from "../components/chatComponents/UsernamePill";
+import MessagePill from "../components/chatComponents/MessagePill";
 import "../styles/chat.css";
 
 const Chat = () => {
@@ -8,7 +11,6 @@ const Chat = () => {
   const [socket, setSocket] = useState(null);
   const [usernameInput, setUsernameInput] = useState("");
 
-  // Initialize WebSocket
   useEffect(() => {
     const ws = new WebSocket("ws://localhost:3001");
 
@@ -24,7 +26,6 @@ const Chat = () => {
     return () => ws.close();
   }, []);
 
-  // Send message
   const sendMessage = () => {
     if (message.trim() && socket) {
       const timestamp = new Date().toLocaleTimeString();
@@ -33,23 +34,18 @@ const Chat = () => {
     }
   };
 
-  // Handle input change and adjust textarea height
   const handleInputChange = (e) => {
     setMessage(e.target.value);
-
-    // Adjust the height dynamically
-    e.target.style.height = "auto"; // Reset height to calculate new height
+    e.target.style.height = "auto";
     e.target.style.height = `${e.target.scrollHeight}px`;
   };
 
-  // Set the username
   const handleSetUsername = () => {
     if (usernameInput.trim()) {
-      setUsername(usernameInput); // Set the username
+      setUsername(usernameInput);
     }
   };
 
-  // Conditionally render the username input or the chat interface
   return (
     <div className="chat">
       {!username ? (
@@ -64,21 +60,39 @@ const Chat = () => {
         </div>
       ) : (
         <>
-          {/* Display messages */}
           <div id="messages">
-            {messages.map((msg, index) => (
-              <div key={index} className="message">{msg}</div>
-            ))}
+            {messages.map((msg, index) => {
+              const match = msg.match(/^\[(.*?)\] (.*?): (.*)/);
+              const timestamp = match ? match[1] : "";
+              const username = match ? match[2] : "Anonymous";
+              const content = match ? match[3] : msg;
+
+              return (
+                <div key={index} className="message">
+                  <div className="message-content-wrapper">
+                    <UsernamePill username={username} />
+                    <MessagePill message={content} />
+                  </div>
+                  <TimestampPill timestamp={timestamp} />
+                  <div className="platform-icons">
+                    {/* Example placeholder icons */}
+                    <div className="icon facebook-icon"></div>
+                    <div className="icon discord-icon"></div>
+                    <div className="icon youtube-icon"></div>
+                    <div className="icon twitch-icon"></div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Input section */}
           <div id="message-input">
             <textarea
               value={message}
               onChange={handleInputChange}
               placeholder="Type your message"
-              rows="1" // Start with one row
-              style={{ resize: "none" }} // Prevent manual resizing
+              rows="1"
+              style={{ resize: "none" }}
             />
             <button onClick={sendMessage}>Send</button>
           </div>
