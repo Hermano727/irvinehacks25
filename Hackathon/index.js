@@ -21,14 +21,14 @@ async function init() {
     },
     { 
       query: 'food bank', 
-      radius: 2000, 
+      radius: 1000, 
       icon: 'https://cdn-icons-png.flaticon.com/128/16819/16819304.png',
       iconSize: { width: 30, height: 30 },
       button: document.getElementById('foodBankToggle')
     },
     { 
-      query: 'housing', 
-      radius: 2000, 
+      query: 'housing and shelter', 
+      radius: 1000, 
       icon: 'https://cdn-icons-png.flaticon.com/128/25/25694.png',
       iconSize: { width: 30, height: 30 },
       button: document.getElementById('housingToggle')
