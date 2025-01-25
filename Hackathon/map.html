@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Maps and Places Autocomplete</title>
+    <title>Community Resources Map</title>
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/@googlemaps/extended-component-library/0.6.11/index.min.js">
     </script>
     <link rel="stylesheet" href="./style.css"/>
   </head>
   <body>
-    <gmpx-api-loader key="AIzaSyDu9pSUf2b7SMeDJHFNKsI0_SmdBIcUiKo
-    " solution-channel="GMP_GE_mapsandplacesautocomplete_v2">
-    </gmpx-api-loader>
-    <gmp-map center="40.749933,-73.98633" zoom="13" map-id="DEMO_MAP_ID">
-      <div slot="control-block-start-inline-start" class="place-picker-container">
-        <gmpx-place-picker placeholder="Enter an address"></gmpx-place-picker>
+    <div class="container">
+      <div class="sidebar">
+        <gmpx-api-loader key="AIzaSyDu9pSUf2b7SMeDJHFNKsI0_SmdBIcUiKo" solution-channel="GMP_GE_mapsandplacesautocomplete_v2">
+        </gmpx-api-loader>
+        <div class="place-picker-container">
+          <gmpx-place-picker placeholder="Enter an address"></gmpx-place-picker>
+        </div>
+        <div class="filter-buttons">
+          <button id="hospitalToggle" class="filter-btn active">Hospitals</button>
+          <button id="foodBankToggle" class="filter-btn active">Food Banks</button>
+          <button id="housingToggle" class="filter-btn active">Housing</button>
+        </div>
       </div>
-      <gmp-advanced-marker></gmp-advanced-marker>
-    </gmp-map>
+      <div class="map-container">
+        <gmp-map center="40.749933,-73.98633" zoom="13" map-id="DEMO_MAP_ID">
+          <gmp-advanced-marker></gmp-advanced-marker>
+        </gmp-map>
+      </div>
+    </div>
     <script src="./index.js"></script>
   </body>
 </html>
