@@ -15,9 +15,24 @@
           <gmpx-place-picker placeholder="Enter an address"></gmpx-place-picker>
         </div>
         <div class="filter-buttons">
-          <button id="hospitalToggle" class="filter-btn active">Hospitals</button>
-          <button id="foodBankToggle" class="filter-btn active">Food Banks</button>
-          <button id="housingToggle" class="filter-btn active">Housing</button>
+          <div class="filter-button-group">
+            <span class="filter-label">Hospitals</span>
+            <button id="hospitalToggle" class="filter-btn active">
+              <img src="https://cdn-icons-png.flaticon.com/128/3063/3063176.png" alt="Hospitals">
+            </button>
+          </div>
+          <div class="filter-button-group">
+            <span class="filter-label">Food Banks</span>
+            <button id="foodBankToggle" class="filter-btn active">
+              <img src="https://cdn-icons-png.flaticon.com/128/16819/16819304.png" alt="Food Banks">
+            </button>
+          </div>
+          <div class="filter-button-group">
+            <span class="filter-label">Housing</span>
+            <button id="housingToggle" class="filter-btn active">
+              <img src="https://cdn-icons-png.flaticon.com/128/25/25694.png" alt="Housing">
+            </button>
+          </div>
         </div>
         <ul id="resultsList" class="results-list"></ul>
       </div>
