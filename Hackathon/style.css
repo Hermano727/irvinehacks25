@@ -61,3 +61,30 @@ gmp-map {
 .filter-btn:hover {
   background-color: #1557b0;
 }
+
+.results-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.results-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.results-list li:hover {
+  background-color: #e6f2ff;
+}
+
+.results-list .category {
+  display: block;
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 5px;
+}

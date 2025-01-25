@@ -4,6 +4,7 @@ async function init() {
   const map = document.querySelector('gmp-map');
   const marker = document.querySelector('gmp-advanced-marker');
   const placePicker = document.querySelector('gmpx-place-picker');
+  const resultsList = document.getElementById('resultsList');
   const infowindow = new google.maps.InfoWindow();
 
   // Initialize the Places Service
@@ -45,10 +46,11 @@ async function init() {
     }
   });
 
-  // Function to clear existing markers
-  const clearMarkers = () => {
+  // Function to clear existing markers and results
+  const clearMarkersAndResults = () => {
     currentMarkers.forEach(marker => marker.setMap(null));
     currentMarkers = [];
+    resultsList.innerHTML = '';
   };
 
   // Add toggle functionality to filter buttons
@@ -61,7 +63,7 @@ async function init() {
 
   // Function to perform search based on active filters
   const performSearch = async (place) => {
-    clearMarkers();
+    clearMarkersAndResults();
     let location;
 
     if (!place.location) {
@@ -111,6 +113,27 @@ async function init() {
               service.getDetails({ placeId: place.place_id }, (details, status) => {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
                   const address = details.formatted_address || 'Address not available';
+                  
+                  // Create list item in results
+                  const listItem = document.createElement('li');
+                  listItem.innerHTML = `
+                    <strong>${place.name}</strong><br>
+                    <span>${address}</span>
+                    <span class="category">${filter.query}</span>
+                  `;
+                  
+                  // Add click event to zoom to marker
+                  listItem.addEventListener('click', () => {
+                    map.innerMap.setCenter(place.geometry.location);
+                    map.innerMap.setZoom(15);
+                    placeInfoWindow.setContent(
+                      `<strong>${place.name}</strong><br><span>${address}</span>`
+                    );
+                    placeInfoWindow.open(map.innerMap, placeMarker);
+                  });
+                  
+                  resultsList.appendChild(listItem);
+
                   placeInfoWindow.setContent(
                     `<strong>${place.name}</strong><br><span>${address}</span>`
                   );
