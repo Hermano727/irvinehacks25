@@ -14,7 +14,8 @@ const Home = () => {
   return (
     <div className="App">
       <Container className="home-container">
-        <Row>
+        <Row className="d-flex align-items-center justify-content-between">
+          {/* Text on the left */}
           <Col md={6} className="content-section">
             <div className="title">
               <h1>Get the Help You Deserve</h1>
@@ -28,7 +29,9 @@ const Home = () => {
               </Button>
             </div>
           </Col>
-          <Col md={6}>
+
+          {/* Image on the right */}
+          <Col md={6} className="image-section">
             <img src={heroImage} alt="Wildfire" className="hero-image" />
           </Col>
         </Row>

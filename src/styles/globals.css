@@ -1,0 +1,61 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Typography */
+  body {
+    font-family: 'Noto Serif', serif;
+    color: #4e4e4e;
+  }
+  
+  /* Colors */
+  :root {
+    --primary: #efb6b2;
+    --secondary: #4e4e4e;
+    --error: #ff4a4a;
+  }
+  
+  /* Containers */
+  .app-container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  
+  /* Headings */
+  .title h1 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: normal;
+    text-align: center;
+  }
+  
+  .title h2 {
+    margin-top: 60px;
+    font-size: 2.6rem;
+    text-align: center;
+  }
+  
+  .title p {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+  }
+  
+  .filter-btn {
+    padding: 0.4rem 1rem;
+  }
+
+  .btn-primary:hover {
+    background-color: white;
+    color: var(--primary);
+  }

@@ -19,7 +19,7 @@ body {
 
 .title h1 {
   color: var(--primary);
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   letter-spacing: 2px;
   font-weight: normal;
 }
@@ -56,6 +56,9 @@ body {
   border-color: var(--primary);
   color: white;
   margin-top: 20px;
+  padding: 0.85rem 1.75rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .get-started-btn:hover {
