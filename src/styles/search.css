@@ -1,0 +1,45 @@
+/* search.css */
+
+.search-container {
+    background-color: #F5F5F5;
+    color: #333;
+    padding: 2rem;
+  }
+  
+  .search-container h1 {
+    color: #4CAF50;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .zip-input {
+    width: 200px;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 1rem;
+  }
+  
+  .filter-btn {
+    background-color: #FFD600;
+    border: none;
+    color: #333;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .filter-btn:hover {
+    background-color: #ffc107;
+  }
+  
+  .results-container {
+    margin-top: 2rem;
+  }
