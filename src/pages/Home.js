@@ -26,6 +26,7 @@ const Home = () => {
               <Button variant="primary" className="get-started-btn" onClick={handleGetStarted}>
                 Get Started
               </Button>
+              <button onClick={() => navigate("/chat")}>Go to Chat</button>
             </div>
           </Col>
           <Col md={6}>
