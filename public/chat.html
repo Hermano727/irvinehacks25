@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Chat</title>
+  <link rel="stylesheet" href="../src/styles/chat.css">
+</head>
+<body>
+  <h1>Live Chat</h1>
+  
+  <!-- Username Input Section -->
+  <div id="username-section">
+    <input type="text" id="username" placeholder="Enter your username" />
+    <button id="set-username">Set Username</button>
+  </div>
+
+  <!-- Chat Section -->
+  <div id="chat-section" style="display: none;">
+    <div id="messages"></div>
+    <div id="message-input">
+      <input type="text" id="message" placeholder="Type a message" />
+      <button id="send">Send</button>
+    </div>
+  </div>
+
+  <script src="../src/pages/Chat.js"></script>
+</body>
+</html>
