@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import supabase from "../services/supabaseClient";
 import TimestampPill from "../components/chatComponents/TimestampPill";
 import UsernamePill from "../components/chatComponents/UsernamePill";
 import MessagePill from "../components/chatComponents/MessagePill";
@@ -8,38 +9,69 @@ const Chat = () => {
   const [username, setUsername] = useState("");
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
-  const [socket, setSocket] = useState(null);
   const [usernameInput, setUsernameInput] = useState("");
 
+  // Fetch initial messages and set up real-time subscription
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:3001");
-
-    ws.onopen = () => console.log("Connected to WebSocket server");
-    ws.onmessage = async (event) => {
-      const data = event.data instanceof Blob ? await event.data.text() : event.data;
-      setMessages((prev) => [...prev, data]);
+    const fetchMessages = async () => {
+      const { data, error } = await supabase
+        .from("messages")
+        .select("*")
+        .order("timestamp", { ascending: true });
+      if (error) {
+        console.error("Error fetching messages:", error);
+      } else {
+        console.log("Fetched messages:", data);
+        setMessages(data);
+      }
     };
-    ws.onerror = (error) => console.error("WebSocket error:", error);
-    ws.onclose = () => console.log("Disconnected from WebSocket server");
 
-    setSocket(ws);
-    return () => ws.close();
+    fetchMessages();
+
+    const subscription = supabase
+      .channel("realtime:messages")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "messages" },
+        (payload) => {
+          console.log("Real-time message received:", payload.new);
+          setMessages((prev) => [...prev, payload.new]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(subscription);
+    };
   }, []);
 
-  const sendMessage = () => {
-    if (message.trim() && socket) {
-      const timestamp = new Date().toLocaleTimeString();
-      socket.send(`[${timestamp}] ${username || "Anonymous"}: ${message}`);
+  // Send a new message to Supabase
+  const sendMessage = async () => {
+    if (message.trim()) {
+      const { error } = await supabase.from("messages").insert([
+        {
+          username: username || "Anonymous",
+          content: message,
+          timestamp: new Date().toISOString(), // Add timestamp to ensure proper ordering
+        },
+      ]);
+      if (error) {
+        console.error("Error sending message:", error);
+      } else {
+        console.log("Message sent successfully");
+      }
       setMessage(""); // Clear the input box after sending
     }
   };
 
+  // Handle textarea input and dynamic resizing
   const handleInputChange = (e) => {
     setMessage(e.target.value);
     e.target.style.height = "auto";
     e.target.style.height = `${e.target.scrollHeight}px`;
   };
 
+  // Set the username
   const handleSetUsername = () => {
     if (usernameInput.trim()) {
       setUsername(usernameInput);
@@ -48,6 +80,8 @@ const Chat = () => {
 
   return (
     <div className="chat">
+      <h1 className="modern-title">Welcome to Live Chat</h1>
+
       {!username ? (
         <div className="username-input">
           <input
@@ -61,29 +95,15 @@ const Chat = () => {
       ) : (
         <>
           <div id="messages">
-            {messages.map((msg, index) => {
-              const match = msg.match(/^\[(.*?)\] (.*?): (.*)/);
-              const timestamp = match ? match[1] : "";
-              const username = match ? match[2] : "Anonymous";
-              const content = match ? match[3] : msg;
-
-              return (
-                <div key={index} className="message">
-                  <div className="message-content-wrapper">
-                    <UsernamePill username={username} />
-                    <MessagePill message={content} />
-                  </div>
-                  <TimestampPill timestamp={timestamp} />
-                  <div className="platform-icons">
-                    {/* Example placeholder icons */}
-                    <div className="icon facebook-icon"></div>
-                    <div className="icon discord-icon"></div>
-                    <div className="icon youtube-icon"></div>
-                    <div className="icon twitch-icon"></div>
-                  </div>
+            {messages.map((msg) => (
+              <div key={msg.id} className="message">
+                <div className="message-content-wrapper">
+                  <UsernamePill username={msg.username} />
+                  <MessagePill message={msg.content} />
                 </div>
-              );
-            })}
+                <TimestampPill timestamp={new Date(msg.timestamp).toLocaleTimeString()} />
+              </div>
+            ))}
           </div>
 
           <div id="message-input">
