@@ -23,6 +23,9 @@ export const Navbar = () => {
         <li>
           <NavLink to="/contact">Contact</NavLink>
         </li>
+        <li>
+          <NavLink to="/chat" className="chat-button">CHAT NOW</NavLink>
+        </li>
       </ul>
     </nav>
   );
