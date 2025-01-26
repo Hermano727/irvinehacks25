@@ -1,0 +1,49 @@
+/* map.css */
+.map-page {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 300px;
+    background-color: #f5f5f5;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .filter-btn img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .filter-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .map-container {
+    flex-grow: 1;
+    height: 100%;
+  }
+  
+  .info-window {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
