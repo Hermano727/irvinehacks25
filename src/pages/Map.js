@@ -16,23 +16,27 @@ const Map = () => {
     libraries: ['places'], // Include Places library for search functionality
   });
 
+  // Filters with custom labels
   const filters = [
     { 
       query: 'Hospital', 
+      label: 'Hospitals', // Custom label for the button
       radius: 1000, 
       icon: 'https://cdn-icons-png.flaticon.com/128/3063/3063176.png',
       iconSize: { width: 30, height: 30 },
     },
     { 
       query: 'Food Bank', 
+      label: 'Food Banks', // Custom label for the button
       radius: 1000, 
       icon: 'https://cdn-icons-png.flaticon.com/128/16819/16819304.png',
       iconSize: { width: 30, height: 30 },
     },
     { 
       query: 'Housing and Shelter', 
+      label: 'Shelters', // Custom label for the button
       radius: 1000, 
-      icon: 'https://cdn-icons-png.flaticon.com/128/25/25694.png',
+      icon: 'https://cdn-icons-png.flaticon.com/128/2550/2550430.png',
       iconSize: { width: 30, height: 30 },
     }
   ];
@@ -194,7 +198,7 @@ const Map = () => {
             onClick={() => handleFilterToggle(filter)}
           >
             <img src={filter.icon} alt={filter.query} />
-            {filter.query}
+            {filter.label} {/* Display the custom label */}
           </button>
         ))}
         

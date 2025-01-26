@@ -20,7 +20,7 @@ const Contacts = () => {
           <li>
             <strong>Brandon Khor</strong>
             <br />
-            bkhor@gmail.com
+            brandonkedu@gmail.com
           </li>
           <li>
             <strong>Nathan Tam</strong>

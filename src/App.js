@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Chat from './pages/Chat';
 import Contacts from './pages/Contact';
 import OurStory from './pages/OurStory';
+import Resources from './pages/Resources';
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
         <Route path="/chat" element={<Chat />} />
         <Route path="/contact" element={<Contacts />} />
         <Route path="/our-story" element={<OurStory />} />
+        <Route path="/extra-resources" element={<Resources />} />
+        
       </Routes>
       <Footer />
     </Router>
