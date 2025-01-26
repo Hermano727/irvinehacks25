@@ -7,9 +7,12 @@ import "../styles/chat.css";
 
 const Chat = () => {
   const [username, setUsername] = useState("");
+  const [location, setLocation] = useState(""); // State for location
   const [messages, setMessages] = useState([]);
+  const [filteredMessages, setFilteredMessages] = useState([]); // Messages filtered by city
   const [message, setMessage] = useState("");
   const [usernameInput, setUsernameInput] = useState("");
+  const [locationInput, setLocationInput] = useState(""); // Input for location
 
   // Fetch initial messages and set up real-time subscription
   useEffect(() => {
@@ -43,12 +46,27 @@ const Chat = () => {
     };
   }, []);
 
+  // Filter messages based on the user's city
+  useEffect(() => {
+    if (location) {
+      const userCity = location.trim().toLowerCase();
+      const filtered = messages.filter((msg) => {
+        const msgCity = msg.location?.trim().toLowerCase();
+        return msgCity === userCity;
+      });
+      setFilteredMessages(filtered);
+    } else {
+      setFilteredMessages([]);
+    }
+  }, [location, messages]);
+
   // Send a new message to Supabase
   const sendMessage = async () => {
-    if (message.trim() && username) {
+    if (message.trim() && username && location) {
       const { error } = await supabase.from("messages").insert([
         {
           username,
+          location, // Add location to the message
           content: message,
           timestamp: new Date().toISOString(),
         },
@@ -60,6 +78,14 @@ const Chat = () => {
     }
   };
 
+  // Set the username and location
+  const handleSetUserInfo = () => {
+    if (usernameInput.trim() && locationInput.trim()) {
+      setUsername(usernameInput);
+      setLocation(locationInput);
+    }
+  };
+
   // Handle textarea input and dynamic resizing
   const handleInputChange = (e) => {
     setMessage(e.target.value);
@@ -67,34 +93,52 @@ const Chat = () => {
     e.target.style.height = `${e.target.scrollHeight}px`;
   };
 
-  // Set the username
-  const handleSetUsername = () => {
-    if (usernameInput.trim()) {
-      setUsername(usernameInput);
-    }
-  };
-
   return (
     <div className="chat">
       <h1 className="modern-title">Welcome to Live Chat</h1>
 
-      {/* Username Input */}
-      <div class="message-input">
-        <input
-          type="text"
-          value={usernameInput}
-          onChange={(e) => setUsernameInput(e.target.value)}
-          placeholder="Enter your username"
-          disabled={!!username} // Disable input if username is set
-        />
-        <button onClick={handleSetUsername} disabled={!!username}>
-          {username ? "Username Set" : "Set Username"}
-        </button>
+      {/* Username and Location Input */}
+      <div className="username-input">
+        {!username || !location ? (
+          <>
+            <div className="custom-input-group">
+              <input
+                type="text"
+                value={usernameInput}
+                onChange={(e) => setUsernameInput(e.target.value)}
+                placeholder="Enter your username"
+                className="styled-input"
+              />
+            </div>
+            <div className="custom-input-group">
+              <input
+                type="text"
+                value={locationInput}
+                onChange={(e) => setLocationInput(e.target.value)}
+                placeholder="Enter your city"
+                className="styled-input"
+              />
+            </div>
+            <button
+              onClick={handleSetUserInfo}
+              className="set-user-info-button"
+            >
+              Set User Info
+            </button>
+          </>
+        ) : (
+          <div className="user-info">
+            <p>
+              <strong>Username:</strong> {username} | <strong>City:</strong>{" "}
+              {location}
+            </p>
+          </div>
+        )}
       </div>
 
-      {/* Chat Messages and Input */}
+      {/* Chat Messages */}
       <div id="messages">
-        {messages.map((msg) => (
+        {filteredMessages.map((msg) => (
           <div key={msg.id} className="message">
             <div className="message-content-wrapper">
               <UsernamePill username={msg.username} />
@@ -105,16 +149,22 @@ const Chat = () => {
         ))}
       </div>
 
+      {/* Message Input */}
       <div id="message-input">
         <textarea
           value={message}
           onChange={handleInputChange}
-          placeholder={username ? "Type your message" : "Set your username to chat"}
+          placeholder={
+            username && location ? "Type your message" : "Set your username and city to chat"
+          }
           rows="1"
           style={{ resize: "none" }}
-          disabled={!username} // Disable message input until username is set
+          disabled={!username || !location} // Disable until username and location are set
         />
-        <button onClick={sendMessage} disabled={!username || !message.trim()}>
+        <button
+          onClick={sendMessage}
+          disabled={!username || !location || !message.trim()}
+        >
           Send
         </button>
       </div>

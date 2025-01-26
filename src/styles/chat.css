@@ -6,13 +6,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(to bottom, #63aee0, #ffffff); /* Green to white gradient */
+    background: linear-gradient(to bottom, #63aee0, #ffffff); /* Blue to white gradient */
     min-height: 100vh;
-  }  
+  }
   
   /* Messages Container */
   #messages {
-    width: 150vh; /* Chat box takes up 70% of the screen width */
+    width: 150vh;
     max-width: 90%;
     height: 60vh;
     border: 1px solid #ccc;
@@ -21,42 +21,80 @@ body {
     margin: 20px 0;
     padding: 10px;
     background: white;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px px rgba(0, 0, 0, 0.1);
   }
   
+  /* Username and Location Input Section */
   .username-input {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     width: 70%; /* Matches the width of the messages container */
     max-width: 800px;
     margin-bottom: 20px;
-    
-    align-items: flex-start; /* Align input and button at the top */
-    gap: 10px; /* Add space between textarea and button */
+    justify-content: center;
   }
-
+  
+  .custom-input-group {
+    flex: 1;
+  }
+  
+  .styled-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #007bff; /* Purple border */
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .styled-input::placeholder {
+    color: #bbb;
+    font-style: italic;
+  }
+  
+  .set-user-info-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .set-user-info-button:hover {
+    background-color: #007bff;
+  }
+  
   /* Individual Message Container */
   .message {
-    background-color: #63aee0; /* Yellow background for the message box */
     padding: 15px;
-    border-radius: 8px;
+    border-radius: 20px; /* Rounded corners for iMessage-like look */
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     position: relative; /* For positioning the timestamp */
+    max-width: 60%; /* Messages take up to 60% of the container */
   }
   
-  #user-button {
-    background-color: #04AA6D; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+  /* Sent Messages */
+  .message.sent {
+    background-color: #d1f1c7; /* Light green for sent messages */
+    align-self: flex-end; /* Align sent messages to the right */
   }
-
+  
+  /* Received Messages */
+  .message.received {
+    background-color: #f0f0f0; /* Light gray for received messages */
+    align-self: flex-start; /* Align received messages to the left */
+  }
+  
   /* Username Pill Styling */
   .username-pill {
     font-weight: bold;
@@ -75,20 +113,20 @@ body {
   /* Timestamp Pill Styling */
   .timestamp-pill {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    bottom: -20px; /* Place timestamp below the message bubble */
+    right: 15px; /* Align timestamp to the right of the bubble */
     font-size: 12px;
-    color: #ffffff; /* Light gray for the timestamp */
+    color: #999; /* Gray for the timestamp */
   }
   
   /* Input Section Styling */
   #message-input {
     display: flex;
-    width: 70%; /* Matches the width of the messages container */
+    width: 70%;
     max-width: 800px;
     margin-bottom: 20px;
     align-items: flex-start; /* Align input and button at the top */
-    gap: 10px; /* Add space between textarea and button */
+    gap: 10px;
   }
   
   #message-input textarea {
@@ -122,13 +160,13 @@ body {
   /* Responsive Media Queries */
   @media screen and (max-width: 768px) {
     #messages {
-      width: 40vh; /* Expand width for smaller screens */
+      width: 40vh;
       height: 70vh;
     }
   
     #message-input {
-      width: 90%; /* Matches the width of the messages container */
-      flex-direction: column; /* Stack input and button vertically */
+      width: 90%;
+      flex-direction: column;
       align-items: stretch;
     }
   
@@ -138,7 +176,7 @@ body {
     }
   
     #message-input button {
-      width: 100%; /* Full width for mobile */
+      width: 100%;
     }
   
     .message {
@@ -149,17 +187,16 @@ body {
   
   @media screen and (max-width: 480px) {
     #messages {
-      height: 65vh; /* Adjust height for very small screens */
+      height: 65vh;
     }
   
     .message-pill {
-      font-size: 13px; /* Slightly smaller font size for messages */
+      font-size: 13px;
     }
   
     .timestamp-pill,
-    
     .username-pill {
-      font-size: 12px; /* Smaller font for timestamp and username */
+      font-size: 12px;
     }
   }
   
