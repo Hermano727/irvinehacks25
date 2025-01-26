@@ -12,10 +12,10 @@ const Map = () => {
   const [activeFilters, setActiveFilters] = useState({}); // Track active filters
 
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyDu9pSUf2b7SMeDJHFNKsI0_SmdBIcUiKo', // Replace with your actual API key
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API, // Use correct env variable
     libraries: ['places'], // Include Places library for search functionality
   });
-
+  
   // Filters with custom labels
   const filters = [
     { 
