@@ -41,7 +41,7 @@
   
   .styled-input {
     width: 100%; /* Let the input fields expand fully within their container */
-    padding: 12px; /* Increase padding for better usability */
+    padding: 10px; /* Increase padding for better usability */
     font-size: 16px; /* Adjust font size for better readability */
     border: 2px solid #007bff;
     border-radius: 8px;
