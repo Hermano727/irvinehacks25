@@ -25,23 +25,20 @@ html, body, #root, .App {
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
   z-index: 1; /* Content should be above the overlay */
   height: 100vh;
 }
 
 .content-section {
-  background-color: rgba(255, 255, 255, 0.9); /* Increase the opacity for a more solid background */
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
   text-align: center;
   z-index: 1;
-  border-radius: 8px; /* Optional: for rounded corners */
-  height: 100%;
-  width: 100%; /* Make the content section take up the full width */
-  max-width: 800px; /* Optional: set a max-width to prevent excessive stretching */
 }
 
 
