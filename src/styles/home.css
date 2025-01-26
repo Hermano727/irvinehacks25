@@ -1,36 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
-
-:root {
-  --primary: #efb6b2;
-  --secondary: #4e4e4e;
-  --error: #ff4a4a;
-}
-
-/* base styles & title */
-html, body {
-  font-family: 'Noto Serif';
-  height: 100%;
-  margin: 0;
-}
-
-.App {
+html, body, #root, .App {
+  position: relative;
   width: 100%;
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
+  background-image: url('../assets/background-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 0;
 }
 
 .home-container {
   flex: 1;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
+.content-section {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.8); /* Light background container */
+  border-radius: 8px; /* Optional: for rounded corners */
+  padding: 3rem; /* Space around text */
+}
 
 .title h1 {
   color: var(--primary);
-  font-size: 1.8rem;
+  font-size: 2rem;
   letter-spacing: 2px;
   font-weight: normal;
 }
@@ -38,26 +51,12 @@ html, body {
 .title h2 {
   margin-top: 20px;
   font-size: 2.6rem;
+  color: var(--secondary); /* Override for H2 color */
 }
 
 .title p {
   margin-top: 20px;
-}
-
-.content-section {
-  z-index: 1;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers children horizontally */
-  justify-content: center; /* Centers children vertically */
-  text-align: center; /* Optional: centers text within the container */
-}
-
-
-.hero-image {
-  max-width: 100%;
-  height: auto;
+  color: var(--secondary); /* Override for P color */
 }
 
 .get-started-btn {
@@ -69,9 +68,28 @@ html, body {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  z-index: 1;
 }
 
 .get-started-btn:hover {
   background-color: rgb(236, 226, 236);
+  color: var(--primary);
+  z-index: 1;
+}
+
+:root {
+  --primary: #efb6b2;
+  --secondary: #4e4e4e;
+  --error: #ff4a4a;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: white;
   color: var(--primary);
 }

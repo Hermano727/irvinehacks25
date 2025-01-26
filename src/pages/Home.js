@@ -1,22 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import heroImage from '../assets/home-img.jpg';
+import backgroundImage from '../assets/background-img.jpg';
 import '../styles/home.css';
 
 const Home = () => {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    navigate('/search');
+    navigate('/map');
   };
 
   return (
     <div className="App">
+      <div className="background-overlay"></div>
       <Container className="home-container">
         <Row className="d-flex align-items-center justify-content-between">
-          {/* Text on the left */}
-          <Col md={6} className="content-section">
+          <Col md={12} className="content-section">
             <div className="title">
               <h1>Everyone deserves access to basic resources</h1>
               <h2>Get the help that you deserve: explore below!</h2>
@@ -28,11 +28,6 @@ const Home = () => {
                 Get Started
               </Button>
             </div>
-          </Col>
-
-          {/* Image on the right */}
-          <Col md={6} className="image-section">
-            <img src={heroImage} alt="Wildfire" className="hero-image" />
           </Col>
         </Row>
       </Container>
