@@ -6,7 +6,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(to bottom, #a8e063, #ffffff); /* Green to white gradient */
+    background: linear-gradient(to bottom, #63aee0, #ffffff); /* Green to white gradient */
     min-height: 100vh;
   }  
   
@@ -24,9 +24,19 @@ body {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
   
+  .username-input {
+    display: flex;
+    width: 70%; /* Matches the width of the messages container */
+    max-width: 800px;
+    margin-bottom: 20px;
+    
+    align-items: flex-start; /* Align input and button at the top */
+    gap: 10px; /* Add space between textarea and button */
+  }
+
   /* Individual Message Container */
   .message {
-    background-color: #0099ff; /* Yellow background for the message box */
+    background-color: #63aee0; /* Yellow background for the message box */
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 15px;
@@ -36,6 +46,17 @@ body {
     position: relative; /* For positioning the timestamp */
   }
   
+  #user-button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
   /* Username Pill Styling */
   .username-pill {
     font-weight: bold;
@@ -136,6 +157,7 @@ body {
     }
   
     .timestamp-pill,
+    
     .username-pill {
       font-size: 12px; /* Smaller font for timestamp and username */
     }

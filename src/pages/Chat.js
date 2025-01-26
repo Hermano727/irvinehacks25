@@ -21,7 +21,6 @@ const Chat = () => {
       if (error) {
         console.error("Error fetching messages:", error);
       } else {
-        console.log("Fetched messages:", data);
         setMessages(data);
       }
     };
@@ -34,7 +33,6 @@ const Chat = () => {
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "messages" },
         (payload) => {
-          console.log("Real-time message received:", payload.new);
           setMessages((prev) => [...prev, payload.new]);
         }
       )
@@ -47,20 +45,18 @@ const Chat = () => {
 
   // Send a new message to Supabase
   const sendMessage = async () => {
-    if (message.trim()) {
+    if (message.trim() && username) {
       const { error } = await supabase.from("messages").insert([
         {
-          username: username || "Anonymous",
+          username,
           content: message,
-          timestamp: new Date().toISOString(), // Add timestamp to ensure proper ordering
+          timestamp: new Date().toISOString(),
         },
       ]);
       if (error) {
         console.error("Error sending message:", error);
-      } else {
-        console.log("Message sent successfully");
       }
-      setMessage(""); // Clear the input box after sending
+      setMessage("");
     }
   };
 
@@ -82,42 +78,46 @@ const Chat = () => {
     <div className="chat">
       <h1 className="modern-title">Welcome to Live Chat</h1>
 
-      {!username ? (
-        <div className="username-input">
-          <input
-            type="text"
-            value={usernameInput}
-            onChange={(e) => setUsernameInput(e.target.value)}
-            placeholder="Enter your username"
-          />
-          <button onClick={handleSetUsername}>Set Username</button>
-        </div>
-      ) : (
-        <>
-          <div id="messages">
-            {messages.map((msg) => (
-              <div key={msg.id} className="message">
-                <div className="message-content-wrapper">
-                  <UsernamePill username={msg.username} />
-                  <MessagePill message={msg.content} />
-                </div>
-                <TimestampPill timestamp={new Date(msg.timestamp).toLocaleTimeString()} />
-              </div>
-            ))}
-          </div>
+      {/* Username Input */}
+      <div class="message-input">
+        <input
+          type="text"
+          value={usernameInput}
+          onChange={(e) => setUsernameInput(e.target.value)}
+          placeholder="Enter your username"
+          disabled={!!username} // Disable input if username is set
+        />
+        <button onClick={handleSetUsername} disabled={!!username}>
+          {username ? "Username Set" : "Set Username"}
+        </button>
+      </div>
 
-          <div id="message-input">
-            <textarea
-              value={message}
-              onChange={handleInputChange}
-              placeholder="Type your message"
-              rows="1"
-              style={{ resize: "none" }}
-            />
-            <button onClick={sendMessage}>Send</button>
+      {/* Chat Messages and Input */}
+      <div id="messages">
+        {messages.map((msg) => (
+          <div key={msg.id} className="message">
+            <div className="message-content-wrapper">
+              <UsernamePill username={msg.username} />
+              <MessagePill message={msg.content} />
+            </div>
+            <TimestampPill timestamp={new Date(msg.timestamp).toLocaleTimeString()} />
           </div>
-        </>
-      )}
+        ))}
+      </div>
+
+      <div id="message-input">
+        <textarea
+          value={message}
+          onChange={handleInputChange}
+          placeholder={username ? "Type your message" : "Set your username to chat"}
+          rows="1"
+          style={{ resize: "none" }}
+          disabled={!username} // Disable message input until username is set
+        />
+        <button onClick={sendMessage} disabled={!username || !message.trim()}>
+          Send
+        </button>
+      </div>
     </div>
   );
 };
