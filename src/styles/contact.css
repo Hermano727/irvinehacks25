@@ -1,0 +1,36 @@
+.contacts-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+  }
+  
+  .contacts-info {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .contacts-info h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .contacts-info ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contacts-info li {
+    margin-bottom: 16px;
+    font-size: 16px;
+  }
+  
+  .contacts-info li strong {
+    font-weight: bold;
+  }
