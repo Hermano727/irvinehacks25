@@ -8,7 +8,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    navigate('/map');
+    navigate('/search');
   };
 
   return (
@@ -18,8 +18,8 @@ const Home = () => {
           {/* Text on the left */}
           <Col md={6} className="content-section">
             <div className="title">
-              <h1>Get the Help You Deserve</h1>
-              <h2>With our website, we will get you the help you need.</h2>
+              <h1>Everyone deserves access to basic resources</h1>
+              <h2>Get the help that you deserve: explore below!</h2>
               <p>
                 With climate disasters worsening and inadequate resources in times of
                 crisis, many victims of wildfires are rendered in tough spots.

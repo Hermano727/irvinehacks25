@@ -7,11 +7,11 @@ function Footer() {
       <hr className="footer-separator" />
       <div className="footer-content">
         <div className="footer-social-media">
-          <a href="/" target="_blank">CAre</a>
+          <span className="footer-info__name">CAre</span>
         </div>
         <div className="footer-info">
           <div className="footer-info-left">
-            <div className="footer-info__name">Extra resources</div>
+            <a href="/extra-resources" className="footer-extra-resources">Extra resources</a>
             <div className="footer-info__returns">
               {/* Returns Policy */}
               <br />
@@ -19,20 +19,14 @@ function Footer() {
             </div>
           </div>
           <div className="footer-info-center">
-            <div className="footer-info__email">shop.info@gmail.com</div>
+            <a href="/about-us" className="footer-info-about">About Us</a>
             <div className="footer-info__terms">
-              About Us
-              <br />
               {/* Copyright */}
             </div>
           </div>
           <div className="footer-info-right">
             <div className="footer-info__number"></div>
-            <div className="footer-info__contact">
-              Our Story
-              <br />
-              {/* Contact Us */}
-            </div>
+            <a href="/our-story" className="footer-our-story">Our Story</a>
           </div>
         </div>
       </div>
