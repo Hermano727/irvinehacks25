@@ -2,8 +2,9 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 50px;
     display: flex;
+
     flex-direction: column;
     align-items: center;
     background: linear-gradient(to bottom, #63aee0, #ffffff); /* Blue to white gradient */
@@ -20,7 +21,7 @@ body {
     overflow-y: auto;
     margin: 20px 0;
     padding: 10px;
-    background: white;
+    background: rgb(245, 245, 245);
     box-shadow: 0px 2px px rgba(0, 0, 0, 0.1);
   }
   
@@ -35,14 +36,18 @@ body {
     justify-content: center;
   }
   
+  .subtitle{
+    color: white;
+  }
   .custom-input-group {
     flex: 1;
   }
   
+  /* Styled Input */
   .styled-input {
     width: 100%;
     padding: 10px;
-    border: 2px solid #007bff; /* Purple border */
+    border: 2px solid #007bff; /* Blue border */
     border-radius: 8px;
     outline: none;
     font-size: 16px;
@@ -68,25 +73,28 @@ body {
   }
   
   .set-user-info-button:hover {
-    background-color: #007bff;
+    background-color: #0056b3;
   }
   
   /* Individual Message Container */
   .message {
     padding: 15px;
     border-radius: 20px; /* Rounded corners for iMessage-like look */
-    margin-bottom: 15px;
+    margin-bottom: 23px;
     display: flex;
     flex-direction: column;
+    background: rgb(255, 255, 255);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     position: relative; /* For positioning the timestamp */
     max-width: 60%; /* Messages take up to 60% of the container */
   }
   
-  /* Sent Messages */
+  /* Sent Messages (Blue Bubble) */
   .message.sent {
-    background-color: #d1f1c7; /* Light green for sent messages */
+    background-color: #76b5f8; /* Light blue for sent messages */
     align-self: flex-end; /* Align sent messages to the right */
+    color: #333; /* Text color for readability */
+    text-align: left; /* Optional: Align text inside the bubble */
   }
   
   /* Received Messages */

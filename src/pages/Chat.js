@@ -95,80 +95,84 @@ const Chat = () => {
 
   return (
     <div className="chat">
-      <h1 className="modern-title">Welcome to Live Chat</h1>
+  <h3 className="lato-regular" style={{ color: "White" }}>Welcome to Live Chat</h3>
+  <blockquote className="blockquote subtitle">
+    <p>Update others about real-time emergency alerts in your area.</p>
+  </blockquote>
 
-      {/* Username and Location Input */}
-      <div className="username-input">
-        {!username || !location ? (
-          <>
-            <div className="custom-input-group">
-              <input
-                type="text"
-                value={usernameInput}
-                onChange={(e) => setUsernameInput(e.target.value)}
-                placeholder="Enter your username"
-                className="styled-input"
-              />
-            </div>
-            <div className="custom-input-group">
-              <input
-                type="text"
-                value={locationInput}
-                onChange={(e) => setLocationInput(e.target.value)}
-                placeholder="Enter your city"
-                className="styled-input"
-              />
-            </div>
-            <button
-              onClick={handleSetUserInfo}
-              className="set-user-info-button"
-            >
-              Set User Info
-            </button>
-          </>
-        ) : (
-          <div className="user-info">
-            <p>
-              <strong>Username:</strong> {username} | <strong>City:</strong>{" "}
-              {location}
-            </p>
-          </div>
-        )}
-      </div>
-
-      {/* Chat Messages */}
-      <div id="messages">
-        {filteredMessages.map((msg) => (
-          <div key={msg.id} className="message">
-            <div className="message-content-wrapper">
-              <UsernamePill username={msg.username} />
-              <MessagePill message={msg.content} />
-            </div>
-            <TimestampPill timestamp={new Date(msg.timestamp).toLocaleTimeString()} />
-          </div>
-        ))}
-      </div>
-
-      {/* Message Input */}
-      <div id="message-input">
-        <textarea
-          value={message}
-          onChange={handleInputChange}
-          placeholder={
-            username && location ? "Type your message" : "Set your username and city to chat"
-          }
-          rows="1"
-          style={{ resize: "none" }}
-          disabled={!username || !location} // Disable until username and location are set
-        />
-        <button
-          onClick={sendMessage}
-          disabled={!username || !location || !message.trim()}
-        >
-          Send
+  {/* Username and Location Input */}
+  <div className="username-input">
+    {!username || !location ? (
+      <>
+        <div className="custom-input-group">
+          <input
+            type="text"
+            className="styled-input"
+            value={usernameInput}
+            onChange={(e) => setUsernameInput(e.target.value)}
+            placeholder="Name"
+          />
+        </div>
+        <div className="custom-input-group">
+          <input
+            type="text"
+            className="styled-input"
+            value={locationInput}
+            onChange={(e) => setLocationInput(e.target.value)}
+            placeholder="City"
+          />
+        </div>
+        <button className="set-user-info-button" onClick={handleSetUserInfo}>
+          Set User Info
         </button>
+      </>
+    ) : (
+      <div className="user-info subtitle">
+        <p>
+          <strong>Username:</strong> {username} | <strong>City:</strong> {location}
+        </p>
       </div>
-    </div>
+    )}
+  </div>
+
+  {/* Chat Messages */}
+  <div id="messages">
+    {filteredMessages.map((msg) => (
+      <div
+        key={msg.id}
+        className={`message`}
+      >
+        <div className="message-content-wrapper">
+          <UsernamePill username={msg.username} />
+          <MessagePill message={msg.content} />
+        </div>
+        <TimestampPill
+          timestamp={new Date(msg.timestamp).toLocaleTimeString()}
+        />
+      </div>
+    ))}
+  </div>
+
+  {/* Message Input */}
+  <div id="message-input">
+    <textarea
+      value={message}
+      onChange={handleInputChange}
+      placeholder={
+        username && location
+          ? "Type your message"
+          : "Set your username and city to chat"
+      }
+      rows="1"
+      style={{ resize: "none" }}
+      disabled={!username || !location} // Disable until username and location are set
+    />
+    <button onClick={sendMessage} disabled={!username || !location || !message.trim()}>
+      Send
+    </button>
+  </div>
+</div>
+
   );
 };
 
