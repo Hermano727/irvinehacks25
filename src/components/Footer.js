@@ -17,7 +17,7 @@ function Footer() {
       <hr className="footer-separator" />
       <div className="footer-content">
         <div className="footer-info">
-          <div className="footer-info-left">
+          <div className="footer-info-center">
             <a href="/extra-resources" className="footer-extra-resources">Extra resources</a>
             <div className="footer-info__returns">
               {/* Returns Policy */}
@@ -31,9 +31,13 @@ function Footer() {
               {/* Copyright */}
             </div>
           </div>
-          <div className="footer-info-right">
-            <div className="footer-info__number"></div>
-            <a href="/our-story" className="footer-our-story">Our Story</a>
+          <div className="footer-info-center">
+          <a href="/our-story" className="footer-our-story">Our Story</a>
+            <div className="footer-info__returns">
+              {/* Returns Policy */}
+              <br />
+              {/* Delivery */}
+            </div>
           </div>
         </div>
       </div>

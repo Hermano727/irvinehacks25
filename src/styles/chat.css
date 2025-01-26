@@ -22,17 +22,6 @@
     box-shadow: 0px 2px px rgba(0, 0, 0, 0.1);
   }
   
-  /* Username and Location Input Section */
-  .username-input {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 70%; /* Matches the width of the messages container */
-    max-width: 800px;
-    margin-bottom: 20px;
-    justify-content: center;
-  }
-  
   .subtitle{
     color: white;
   }
@@ -40,14 +29,23 @@
     flex: 1;
   }
   
-  /* Styled Input */
+  .username-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%; /* Use 90% of the screen width */
+    max-width: 100%; /* Ensure it doesn't exceed the screen width */
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  
   .styled-input {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #007bff; /* Blue border */
+    width: 100%; /* Let the input fields expand fully within their container */
+    padding: 12px; /* Increase padding for better usability */
+    font-size: 16px; /* Adjust font size for better readability */
+    border: 2px solid #007bff;
     border-radius: 8px;
     outline: none;
-    font-size: 16px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   }
   
