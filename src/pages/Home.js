@@ -17,7 +17,7 @@ const Home = () => {
         <Row className="d-flex align-items-center justify-content-between">
           <Col md={12} className="content-section">
             <div className="title">
-              <h1>Everyone deserves access to basic esources.</h1>
+              <h1>Everyone deserves access to basic resources.</h1>
               <h2>Get the Help that you Deserve: Explore Below!</h2>
               <p>
                 With climate disasters worsening and inadequate resources in times of

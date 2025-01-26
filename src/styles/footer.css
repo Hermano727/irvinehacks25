@@ -1,70 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
-
 .footer {
     display: flex;
-    font-family: 'Montserrat', sans-serif;
     flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
     background-color: #33323f;
     color: white;
-    padding: 20px;
     font-size: 16px;
-    }
-    .footer-social-media {
+}
+
+.footer-info {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 20px;
-    }
-    .footer-social-media__icon {
-    margin: 0px 4px;
-    width: 25px;
-    height: 25px;
-    }
-    .footer-info {
-    display: flex;
-    justify-content: center;
-    }
-    .footer-info-left, .footer-info-center, .footer-info-right {
+    justify-content: space-between; /* Ensure even space between columns */
+    align-items: flex-start; /* Align items to the top to avoid vertical misalignment */
+    width: 100%;
+}
+
+.footer-info-left,
+.footer-info-center,
+.footer-info-right {
     font-size: 14px;
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
-    width: 30%;
-    align-items: center;
+    width: 30%; /* Ensure each column takes up 30% width */
     text-align: center;
-    }
-    .footer-info__name, .footer-extra-resources, .footer-info-about, .footer-info__number, .footer-our-story {
+    align-items: center; /* Ensure content inside each column is centered horizontally */
+    height: 4vh;
+}
+
+.footer-info__name,
+.footer-extra-resources,
+.footer-info-about,
+.footer-info__number,
+.footer-our-story {
     margin-bottom: 10px;
     color: white;
     text-decoration: none;
-    }
-    .footer-info__returns, .footer-info__terms {
+}
+
+.footer-info__returns,
+.footer-info__terms {
     color: white;
-    }
-    .footer-info__number, .footer-info__contact {
+}
+
+.footer-info__number,
+.footer-info__contact {
     text-align: end;
     color: white;
-    }
-    .footer-date {
+}
+
+.footer-date {
     display: flex;
     flex-direction: row;
     align-items: center;
-    }
-    .footer-separator {
+}
+
+.footer-separator {
     flex-grow: 1;
     border: none;
     height: 1px;
     background-color: white;
     width: 100%;
-    }
-    .footer-name {
+}
+
+.footer-name {
     display: flex;
     justify-content: center;
-    }
-    .footer-bottom__name {
+}
+
+.footer-bottom__name {
     text-transform: uppercase;
-    font-family: RobotoBold;
+    font-family: 'RobotoBold';
     font-size: 18px;
-    margin: 0px 20px;
-    }
+}

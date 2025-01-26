@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GoogleMap, Marker, InfoWindow, useJsApiLoader, StandaloneSearchBox } from '@react-google-maps/api';
 import '../styles/map.css';
 import 'font-awesome/css/font-awesome.min.css';
+import Footer from '../components/Footer';
 
 const Map = () => {
   const [markers, setMarkers] = useState([]);

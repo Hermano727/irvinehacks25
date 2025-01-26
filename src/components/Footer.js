@@ -1,14 +1,21 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import '../styles/footer.css';
 
 function Footer() {
+  const location = useLocation();
+
+  // Check if the current path is the map page
+  const isMapPage = location.pathname === '/map';
+
+  if (isMapPage) {
+    return null; // Don't render the footer if on the map page
+  }
+
   return (
     <footer className="footer">
       <hr className="footer-separator" />
       <div className="footer-content">
-        <div className="footer-social-media">
-          <span className="footer-info__name">CAre</span>
-        </div>
         <div className="footer-info">
           <div className="footer-info-left">
             <a href="/extra-resources" className="footer-extra-resources">Extra resources</a>
