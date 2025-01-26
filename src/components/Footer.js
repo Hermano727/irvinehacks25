@@ -26,7 +26,7 @@ function Footer() {
             </div>
           </div>
           <div className="footer-info-center">
-            <a href="/about-us" className="footer-info-about">About Us</a>
+            <a href="/contact" className="footer-info-about">About Us</a>
             <div className="footer-info__terms">
               {/* Copyright */}
             </div>

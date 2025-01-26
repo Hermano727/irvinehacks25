@@ -5,6 +5,8 @@ import Map from './pages/Map';
 import { Navbar } from './components/Navbar';
 import Footer from './components/Footer';
 import Chat from './pages/Chat';
+import Contacts from './pages/Contact';
+import OurStory from './pages/OurStory';
 
 const App = () => {
   return (
@@ -14,6 +16,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/map" element={<Map />} />
         <Route path="/chat" element={<Chat />} />
+        <Route path="/contact" element={<Contacts />} />
+        <Route path="/our-story" element={<OurStory />} />
       </Routes>
       <Footer />
     </Router>
