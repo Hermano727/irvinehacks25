@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import backgroundImage from '../assets/background-img.jpg';
 import '../styles/home.css';
 
 const Home = () => {
