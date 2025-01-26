@@ -8,7 +8,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    navigate('/search');
+    navigate('/map');
   };
 
   return (
