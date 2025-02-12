@@ -10,9 +10,9 @@ const Map = () => {
   const [center, setCenter] = useState({ lat: 40.749933, lng: -73.98633 });
   const [dropdownPlaces, setDropdownPlaces] = useState([]); // State for dropdown list
   const [activeFilters, setActiveFilters] = useState({}); // Track active filters
-
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const { isLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API, // Use correct env variable
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API,
     libraries: ['places'], // Include Places library for search functionality
   });
   
@@ -184,12 +184,22 @@ const Map = () => {
     }
   };
 
+  const toggleSidebar = () => {
+    setSidebarOpen((prev) => !prev);
+  };
+  
+
   if (loadError) return <div>Error loading maps</div>;
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
     <div className="map-page">
-      <div className="sidebar">
+        <button className={`sidebar-toggle ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`} 
+        onClick={toggleSidebar}>
+        <i className={`fa ${sidebarOpen ? 'fa-times' : 'fa-bars'}`}></i>
+        </button>
+      {sidebarOpen && (
+        <div className={`sidebar ${sidebarOpen ? "" : "sidebar-hidden"}`}>
         <h2>Filters</h2>
         {filters.map((filter, index) => (
           <button
@@ -238,7 +248,9 @@ const Map = () => {
             ))}
           </ul>
         </div>
-      </div>
+        </div>
+        )}
+
       
       {/* Google Map */}
       <div className="map-container">
