@@ -200,11 +200,11 @@ const Map = () => {
         </button>
       {sidebarOpen && (
         <div className={`sidebar ${sidebarOpen ? "" : "sidebar-hidden"}`}>
-        <h2>Filters</h2>
+        <h3 className="poppins-lessbold">Filters</h3>
         {filters.map((filter, index) => (
           <button
             key={index}
-            className={`filter-btn ${activeFilters[filter.query] ? 'active' : 'inactive'}`}
+            className={`filter-btn ${activeFilters[filter.query] ? 'active' : 'inactive'} poppins-lessbold`}
             onClick={() => handleFilterToggle(filter)}
           >
             <img src={filter.icon} alt={filter.query} />
@@ -233,7 +233,7 @@ const Map = () => {
         
         {/* Nearby Places List */}
         <div className="dropdown">
-          <h3>Nearby Places</h3>
+          <h3 className="poppins-lessbold">Nearby Places</h3>
           <ul>
             {dropdownPlaces.map((place, index) => (
               <li key={index} onClick={() => handleListItemClick(place)}>

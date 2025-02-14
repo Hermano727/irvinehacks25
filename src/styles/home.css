@@ -106,3 +106,9 @@ html, body, #root, .App {
   font-weight: 800;
   font-style: normal;
 }
+
+.poppins-lessbold {
+    font-family: "Poppins", serif;
+    font-weight: 600;
+    font-style: normal;
+  }
