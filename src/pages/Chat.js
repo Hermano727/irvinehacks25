@@ -95,8 +95,8 @@ const Chat = () => {
 
   return (
     <div className="chat chat-background">
-  <h3 className="lato-regular" style={{ color: "White" }}>Welcome to Live Chat</h3>
-  <blockquote className="blockquote subtitle">
+  <h3 className="poppins-extrabold" style={{ color: "White" }}>Welcome to Live Chat</h3>
+  <blockquote className="blockquote subtitle" style={{ fontWeight: 550 }}>
     <p>Update others about real-time emergency alerts in your area.</p>
   </blockquote>
 
