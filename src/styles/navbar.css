@@ -11,10 +11,29 @@ body, h1 {
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    font-family: "Poppins", serif;
+    font-weight: 800;
+    font-style: normal;
   }
 
 .chat-button:hover {
     background-color: #276e27;
+}
+
+.other-button {
+    background-color: #60748b; /* Soft green */
+    color: white;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: "Poppins", serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+
+.other-button:hover {
+    background-color: #871140;
 }
 
 nav {
@@ -35,6 +54,7 @@ nav .title {
     font-weight: bold;
     text-decoration: none;
     color: white;
+    
 }
 
 nav ul {

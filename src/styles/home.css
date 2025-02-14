@@ -45,8 +45,8 @@ html, body, #root, .App {
 .title h1 {
   color: var(--primary);
   font-size: 2rem;
-  letter-spacing: 2px;
-  font-weight: normal;
+  letter-spacing: 0px;
+  font-weight: 450;
 }
 
 .title h2 {
@@ -93,4 +93,16 @@ html, body, #root, .App {
 .btn-primary:hover {
   background-color: white;
   color: var(--primary);
+}
+
+.poppins-regular {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-extrabold {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: normal;
 }

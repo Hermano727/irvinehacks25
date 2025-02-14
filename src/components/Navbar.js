@@ -18,10 +18,10 @@ export const Navbar = () => {
       </div>
       <ul className={menuOpen ? "open" : ""}>
         <li>
-          <NavLink to="/map">Map</NavLink>
+          <NavLink to="/map" className="other-button">Map</NavLink>
         </li>
         <li>
-          <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/contact" className="other-button">Contact</NavLink>
         </li>
         <li>
           <NavLink to="/chat" className="chat-button">CHAT NOW</NavLink>
